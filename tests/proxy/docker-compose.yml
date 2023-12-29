@@ -4,7 +4,7 @@ version: "3"
 services:
   app-service:
     restart: unless-stopped
-    image: elestio4test/budibase-server:${SOFTWARE_VERSION_TAG}
+    image: budibase.docker.scarf.sh/budibase/apps
     container_name: bbapps
     environment:
       SELF_HOSTED: 1
@@ -78,7 +78,7 @@ services:
     ports:
       - "${MAIN_PORT}:10000"
     container_name: bbproxy
-    image: budibase/proxy
+    image: elestio4test/budibase-proxy
     environment:
       - PROXY_RATE_LIMIT_WEBHOOKS_PER_SECOND=10
       - PROXY_RATE_LIMIT_API_PER_SECOND=20
