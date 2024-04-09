@@ -1,12 +1,6 @@
 #set env vars
 set -o allexport; source .env; set +o allexport;
 
-mkdir -p ./storage
-chown -R 1000:1000 ./storage
+echo 'vm.overcommit_memory = 1' >> /etc/sysctl.conf && sysctl -p
 
-TOKEN=$(openssl rand -base64 32)
-
-cat << EOT > ./.env
-
-ADMIN_TOKEN=${TOKEN}
-EOT
+mkdir -p ./couchdb3_data && chown -R 1001:1001 ./couchdb3_data
